@@ -65,6 +65,19 @@ function setSubmitLoading(submitBtn, loading, originalLabel) {
   submitBtn.textContent = loading ? 'PROCESSING...' : originalLabel;
 }
 
+async function parseApiResponse(response) {
+  const responseText = await response.text();
+  if (!responseText) {
+    throw new Error(`Empty response from server (status ${response.status})`);
+  }
+
+  try {
+    return JSON.parse(responseText);
+  } catch (parseError) {
+    throw new Error(`Invalid server response format (status ${response.status})`);
+  }
+}
+
 function collectFormData() {
   return {
     name: getEl('name').value.trim(),
@@ -137,7 +150,7 @@ document.addEventListener('DOMContentLoaded', () => {
         body: JSON.stringify(formData),
       });
 
-      const registerData = await registerResponse.json();
+      const registerData = await parseApiResponse(registerResponse);
       if (!registerData.success) {
         throw new Error(registerData.error || 'Registration failed');
       }

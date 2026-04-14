@@ -16,9 +16,13 @@ app.use(express.json());
 app.use(express.static('public'));
 
 // MongoDB Connection
+console.log('Connecting to MongoDB:', process.env.MONGODB_URI ? 'URI set' : 'URI NOT set');
 mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/hackathon')
-  .then(() => console.log('MongoDB connected'))
-  .catch(err => console.log('MongoDB error:', err));
+  .then(() => console.log('✅ MongoDB connected successfully'))
+  .catch(err => {
+    console.error('❌ MongoDB connection error:', err.message);
+    process.exit(1);
+  });
 
 // Razorpay Instance (optional - only initialize if keys are provided)
 let razorpay = null;

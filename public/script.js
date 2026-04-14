@@ -158,55 +158,18 @@ document.addEventListener('DOMContentLoaded', () => {
     setSubmitLoading(submitBtn, true, originalLabel);
 
     try {
-      const [configData, registerResponse] = await Promise.all([
-        fetchConfig(),
-        fetch('/api/register', {
-          method: 'POST',
-          headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify(formData),
-        }),
-      ]);
+      const registerResponse = await fetch('/api/register', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData),
+      });
 
       const registerData = await registerResponse.json();
       if (!registerData.success) {
         throw new Error(registerData.error || 'Registration failed');
       }
 
-      if (!configData.razorpayKeyId) {
-        throw new Error('Razorpay key is missing on server config');
-      }
-
-      const rzp = new Razorpay({
-        key: configData.razorpayKeyId,
-        amount: registerData.amount,
-        currency: registerData.currency,
-        order_id: registerData.orderId,
-        name: 'AI IGNITE 2026',
-        description: 'Team Registration Fee - HKBK Hackathon',
-        receipt: registerData.registrationId,
-        prefill: {
-          name: formData.name,
-          email: formData.email,
-          contact: formData.phone,
-        },
-        theme: { color: '#a78bfa' },
-        modal: { escape: true },
-        handler: async (paymentResponse) => {
-          try {
-            await verifyPayment(paymentResponse, registerData.registrationId);
-            showSuccessState();
-          } catch (verificationError) {
-            alert('Payment verification failed. Please contact support.');
-            console.error(verificationError);
-          }
-        },
-      });
-
-      rzp.on('payment.failed', (response) => {
-        alert(`Payment failed: ${response.error.description}`);
-      });
-
-      rzp.open();
+      showSuccessState();
     } catch (error) {
       console.error('Error:', error);
       alert(`Error: ${error.message}`);

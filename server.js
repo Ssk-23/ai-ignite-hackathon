@@ -20,11 +20,14 @@ mongoose.connect(process.env.MONGODB_URI || 'mongodb://localhost:27017/hackathon
   .then(() => console.log('MongoDB connected'))
   .catch(err => console.log('MongoDB error:', err));
 
-// Razorpay Instance
-const razorpay = new Razorpay({
-  key_id: process.env.RAZORPAY_KEY_ID,
-  key_secret: process.env.RAZORPAY_KEY_SECRET,
-});
+// Razorpay Instance (optional - only initialize if keys are provided)
+let razorpay = null;
+if (process.env.RAZORPAY_KEY_ID && process.env.RAZORPAY_KEY_SECRET) {
+  razorpay = new Razorpay({
+    key_id: process.env.RAZORPAY_KEY_ID,
+    key_secret: process.env.RAZORPAY_KEY_SECRET,
+  });
+}
 
 function hasValidRegistrationBody(body) {
   const { name, email, phone, college, teamName, teamSize } = body;
@@ -85,28 +88,32 @@ app.post('/api/register', async (req, res) => {
       teamName,
       teamSize,
       amount: REGISTRATION_FEE_PAISE,
+      status: razorpay ? 'pending' : 'completed', // Auto-complete if no payment
     });
 
     await registration.save();
 
-    // Create Razorpay order
-    const options = {
-      amount: REGISTRATION_FEE_PAISE,
-      currency: 'INR',
-      receipt: registration._id.toString(),
-    };
+    // Create Razorpay order only if Razorpay is configured
+    let orderId = null;
+    if (razorpay) {
+      const options = {
+        amount: REGISTRATION_FEE_PAISE,
+        currency: 'INR',
+        receipt: registration._id.toString(),
+      };
 
-    const order = await razorpay.orders.create(options);
-
-    registration.orderId = order.id;
-    await registration.save();
+      const order = await razorpay.orders.create(options);
+      orderId = order.id;
+      registration.orderId = order.id;
+      await registration.save();
+    }
 
     res.json({
       success: true,
-      orderId: order.id,
+      orderId: orderId,
       registrationId: registration._id,
-      amount: order.amount,
-      currency: order.currency,
+      amount: REGISTRATION_FEE_PAISE,
+      currency: 'INR',
     });
   } catch (error) {
     console.error(error);

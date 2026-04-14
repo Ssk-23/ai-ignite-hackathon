@@ -89,39 +89,12 @@ function isValidFormData(data) {
   );
 }
 
-async function fetchConfig() {
-  const response = await fetch('/api/config');
-  if (!response.ok) {
-    throw new Error('Unable to load payment configuration');
-  }
-
-  return response.json();
-}
-
 function showSuccessState() {
   if (!formEl || !successMessageEl) return;
   formEl.style.display = 'none';
   successMessageEl.style.display = 'block';
   formEl.reset();
   successMessageEl.scrollIntoView({ behavior: 'smooth' });
-}
-
-async function verifyPayment(response, registrationId) {
-  const verifyResponse = await fetch('/api/verify-payment', {
-    method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
-    body: JSON.stringify({
-      paymentId: response.razorpay_payment_id,
-      orderId: response.razorpay_order_id,
-      signature: response.razorpay_signature,
-      registrationId,
-    }),
-  });
-
-  const verifyData = await verifyResponse.json();
-  if (!verifyData.success) {
-    throw new Error(verifyData.error || 'Payment verification failed');
-  }
 }
 
 document.addEventListener('DOMContentLoaded', () => {

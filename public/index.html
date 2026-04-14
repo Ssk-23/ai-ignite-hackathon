@@ -1,0 +1,536 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI IGNITE 2026 | HKBK College Hackathon</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body data-event-date="2026-04-14T09:00:00+05:30">
+  <div class="stars"></div>
+
+  <!-- Navbar -->
+  <nav class="navbar">
+    <div class="nav-container">
+      <div class="nav-brand">
+        <span class="brand-text">AI IGNITE 2026</span>
+      </div>
+
+      <ul class="nav-menu">
+        <li><a href="#about" class="nav-link">ABOUT</a></li>
+        <li><a href="#schedule" class="nav-link">SCHEDULE</a></li>
+        <li><a href="#prizes" class="nav-link">PRIZES</a></li>
+        <li><a href="#venue" class="nav-link">VENUE</a></li>
+      </ul>
+
+      <button class="register-btn" onclick="openModal()">
+        REGISTER NOW
+      </button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero">
+    <div class="hero-content">
+      <p class="college-name">HKBK COLLEGE OF ENGINEERING</p>
+
+      <h1 class="hero-title">
+        <span class="glitch" data-text="AI IGNITE HACKATHON">AI IGNITE HACKATHON</span>
+      </h1>
+
+      <div class="glow-line"></div>
+
+      <p class="hero-tagline">
+        2 DAYS OF PURE NEURAL FIRE — SUPERCHARGE YOUR IDEAS WITH AI-POWERED INNOVATION BUILT FOR THE NEXT GENERATION OF DEVELOPERS.
+      </p>
+
+      <!-- Countdown Timer -->
+      <div class="countdown">
+        <div class="countdown-item">
+          <div class="countdown-number" id="days">03</div>
+          <div class="countdown-label">DAYS</div>
+        </div>
+        <div class="separator">:</div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="hours">00</div>
+          <div class="countdown-label">HOURS</div>
+        </div>
+        <div class="separator">:</div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="minutes">00</div>
+          <div class="countdown-label">MINUTES</div>
+        </div>
+        <div class="separator">:</div>
+        <div class="countdown-item">
+          <div class="countdown-number" id="seconds">00</div>
+          <div class="countdown-label">SECONDS</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Floating particles -->
+    <div class="particle particle-1"></div>
+    <div class="particle particle-2"></div>
+    <div class="particle particle-3"></div>
+  </section>
+
+  <!-- Partners & Sponsors Carousel -->
+  <section class="carousel-section">
+    <div class="carousel-label">PARTNERS & SPONSORS</div>
+    <div class="carousel-line"></div>
+    <div class="carousel-container">
+      <div class="carousel-track">
+        <!-- Add your sponsor logos inside these divs -->
+        <div class="carousel-item">
+          <div class="sponsor-placeholder">Logo 1</div>
+        </div>
+        <div class="carousel-item">
+          <div class="sponsor-placeholder">Logo 2</div>
+        </div>
+        <div class="carousel-item">
+          <div class="sponsor-placeholder">Logo 3</div>
+        </div>
+        <div class="carousel-item">
+          <div class="sponsor-placeholder">Logo 4</div>
+        </div>
+        <div class="carousel-item">
+          <div class="sponsor-placeholder">Logo 5</div>
+        </div>
+        <!-- Duplicate for seamless loop -->
+        <div class="carousel-item">
+          <div class="sponsor-placeholder">Logo 1</div>
+        </div>
+        <div class="carousel-item">
+          <div class="sponsor-placeholder">Logo 2</div>
+        </div>
+        <div class="carousel-item">
+          <div class="sponsor-placeholder">Logo 3</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Hackathon Details Section -->
+  <section class="details-section" id="about">
+    <div class="details-container">
+      <div class="details-grid">
+        <!-- Top Row - 3 Cards -->
+        <div class="details-left">
+          <div class="detail-card magenta-accent">
+            <div class="detail-icon">👥</div>
+            <h3>TEAM SIZE 2-4</h3>
+            <p>Open for all branches. Form your squad and dive into the future of automated intelligence.</p>
+          </div>
+        </div>
+
+        <div class="details-middle">
+          <div class="detail-card highlight-card">
+            <div class="detail-icon">🤖</div>
+            <h3>AI MASTERCLASS</h3>
+            <p>Learn to build with AI. Hands-on sessions covering Prompt Engineering, AI Tools, and Rapid Development workflows to prepare you for the challenge.</p>
+          </div>
+        </div>
+
+        <div class="details-right">
+          <div class="detail-card cyan-bg">
+            <h3>OPEN TO ALL</h3>
+            <p>REGARDLESS OF YOUR MAJOR</p>
+          </div>
+        </div>
+
+        <!-- Bottom Row - Tech Tracks (spans full width) -->
+        <div class="tech-tracks-card">
+          <h3>CURATED TECH TRACKS</h3>
+          <div class="tech-tracks">
+            <span class="track-badge">LLM OPS</span>
+            <span class="track-badge">GENERATIVE ART</span>
+            <span class="track-badge">AGENTIC AI</span>
+            <span class="track-badge">NEURAL SEARCH</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Timeline/Rewards Section -->
+  <section class="timeline-section" id="schedule">
+    <div class="timeline-container">
+      <div class="timeline-header">
+        <h2>The <span class="accent-text">Timeline</span></h2>
+        <p class="status-label">Status: Schedule Synchronized</p>
+      </div>
+
+      <div class="timeline-content">
+        <div class="timeline-item">
+          <div class="timeline-number">01</div>
+          <div class="timeline-badge masterclass">Masterclass</div>
+          <h3>Day 1 – AI Masterclass</h3>
+          <ul class="timeline-list">
+            <li>Learn to build with AI - Foundation & Advanced</li>
+            <li>Hands-on session with industry mentors</li>
+            <li>Topics: Prompt Engineering & AI Tooling</li>
+            <li>Rapid Development Frameworks workshop</li>
+          </ul>
+        </div>
+
+        <div class="timeline-item">
+          <div class="timeline-number">02</div>
+          <div class="timeline-badge hackathon">Hackathon</div>
+          <h3>Day 2 – Hackathon Challenge</h3>
+          <p class="timeline-desc">The ultimate test of innovation. The specific theme-based challenge will be revealed immediately after the Day 1 Masterclass.</p>
+          <div class="mission-objective">
+            <p class="mission-label">Mission Objective</p>
+            <p class="mission-text">"Leverage neural architectures to solve real-world bottlenecks in 24 hours."</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Rewards Section -->
+  <section class="rewards-section" id="prizes">
+    <div class="rewards-container">
+      <div class="rewards-left">
+        <h2>The<br><span>Rewards</span></h2>
+
+        <div class="reward-item">
+          <div class="reward-icon">🎓</div>
+          <div class="reward-content">
+            <h3>Certificates for All</h3>
+            <p>Validated proof of participation and AI proficiency for every attendee.</p>
+          </div>
+        </div>
+
+        <div class="reward-item">
+          <div class="reward-icon">🎁</div>
+          <div class="reward-content">
+            <h3>Exciting Goodies</h3>
+            <p>Exclusive swag, tech stickers, and developer merch for the top performers.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="rewards-right">
+        <div class="prize-box">
+          <div class="prize-star">⭐</div>
+          <p class="prize-label">Grand Prize Pool</p>
+          <p class="prize-amount">₹15,000</p>
+          <p class="prize-subtitle">Winner Takes All</p>
+          <div class="prize-divider"></div>
+          <div class="prize-stars">★ ★ ★</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Sponsor Section -->
+  <section class="sponsor-section">
+    <div class="sponsor-container">
+      <div class="sponsor-left">
+        <div class="sponsor-label">Energy Sponsor</div>
+        <h2>Powered<br><span class="sponsor-highlight">by Red Bull</span></h2>
+        <p class="sponsor-desc">Red Bull gives you wings — and the fuel to code through the night. Stay sharp, stay energized, and build something extraordinary at <strong>AI IGNITE 2026</strong>.</p>
+
+        <div class="sponsor-badges">
+          <span class="sponsor-badge">Unlimited Energy</span>
+          <span class="sponsor-badge">All-Night Fuel</span>
+          <span class="sponsor-badge">Hack Harder</span>
+        </div>
+
+        <p class="sponsor-footer">
+          <span class="sponsor-icon">⚡</span>
+          Official Energy Drink Sponsor – AI IGNITE 2026
+        </p>
+      </div>
+
+      <div class="sponsor-right">
+        <div class="image-placeholder">
+          <div class="ripple ripple-1"></div>
+          <div class="ripple ripple-2"></div>
+          <div class="ripple ripple-3"></div>
+          <div class="floating-image">
+            <div class="image-circle-outer"></div>
+            <div class="image-circle-inner">
+              <div class="image-content">Image Here</div>
+            </div>
+          </div>
+          <div class="image-accent-line"></div>
+        </div>
+        <p class="image-subtitle">Wings for Your Code</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA Section -->
+  <section class="cta-section">
+    <div class="cta-container">
+      <div class="cta-line"></div>
+
+      <div class="cta-content">
+        <h2>Secure Your Slot</h2>
+        <p>Registration is mandatory. Join the most intense AI hackathon of the year at HKBK College of Engineering.</p>
+
+        <button class="cta-button" onclick="openModal()">
+          Register Now
+        </button>
+      </div>
+
+      <div class="cta-icon">
+        <div class="icon-circle">⚡</div>
+        <p>AI IGNITE 2026</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Leadership Section -->
+  <section class="leadership-section">
+    <div class="leadership-container">
+      <h2>Our <span>Leadership</span></h2>
+      <p class="leadership-desc">We extend our deepest gratitude to our institution's visionary leadership. Their unwavering support, guidance, and dedication constitute the foundational pillars in making AI IGNITE 2026 a reality.</p>
+
+      <div class="leadership-grid">
+        <div class="leader-card">
+          <div class="leader-image-placeholder">
+            <div class="leader-image">Image</div>
+          </div>
+          <p class="leader-role">Patron</p>
+          <p class="leader-name">Shri C.M Ibrahim Saheb<br><span>(Chairman)</span></p>
+        </div>
+
+        <div class="leader-card">
+          <div class="leader-image-placeholder">
+            <div class="leader-image">Image</div>
+          </div>
+          <p class="leader-role">Patron</p>
+          <p class="leader-name">Shri C.M Faiz Mohammed<br><span>(Director)</span></p>
+        </div>
+
+        <div class="leader-card">
+          <div class="leader-image-placeholder">
+            <div class="leader-image">Image</div>
+          </div>
+          <p class="leader-role">Chairperson</p>
+          <p class="leader-name">Dr. Mohammed Riyaz Ahmed<br><span>(Principal)</span></p>
+        </div>
+
+        <div class="leader-card">
+          <div class="leader-image-placeholder">
+            <div class="leader-image">Image</div>
+          </div>
+          <p class="leader-role">Convenor</p>
+          <p class="leader-name">Dr. Smitha Kurian<br><span>(HOD)</span></p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Organizing Committee Section -->
+  <section class="committee-section">
+    <div class="committee-container">
+      <h2>Organizing <span>Committee</span></h2>
+
+      <div class="committee-grid">
+        <!-- Organizers -->
+        <div class="committee-column">
+          <div class="committee-header">
+            <span class="committee-number">01</span>
+            <h3>Organizers</h3>
+          </div>
+          <div class="committee-list">
+            <div class="committee-item organizers">
+              <p>Dr. Madhu Gopinath</p>
+            </div>
+            <div class="committee-item organizers">
+              <p>Dr. Sivarajan</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Faculty Coordinators -->
+        <div class="committee-column">
+          <div class="committee-header">
+            <span class="committee-number">02</span>
+            <h3>Faculty Coordinators</h3>
+          </div>
+          <div class="committee-list">
+            <div class="committee-item faculty">
+              <p>Prof. Denzina</p>
+            </div>
+            <div class="committee-item faculty">
+              <p>Prof. Bhaguashree</p>
+            </div>
+            <div class="committee-item faculty">
+              <p>Prof. Ayesha Anjum</p>
+            </div>
+            <div class="committee-item faculty">
+              <p>Prof. Sushmitha</p>
+            </div>
+            <div class="committee-item faculty">
+              <p>Prof. Subhadra</p>
+            </div>
+            <div class="committee-item faculty">
+              <p>Prof. Jenita</p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Student Coordinators -->
+        <div class="committee-column">
+          <div class="committee-header">
+            <span class="committee-number">03</span>
+            <h3>Student Coordinators</h3>
+          </div>
+          <div class="committee-list">
+            <div class="committee-item students">
+              <p>Abdul Muqeet</p>
+            </div>
+            <div class="committee-item students">
+              <p>Bhavani Singh</p>
+            </div>
+            <div class="committee-item students">
+              <p>Aryan Kapoor</p>
+            </div>
+            <div class="committee-item students">
+              <p>Seema Sultana</p>
+            </div>
+            <div class="committee-item students">
+              <p>Siddiq</p>
+            </div>
+            <div class="committee-item students">
+              <p>Syed Shahid Hafeez</p>
+            </div>
+            <div class="committee-item students">
+              <p>Likhith Metallica</p>
+            </div>
+            <div class="committee-item students">
+              <p>Md Yusuf Ali</p>
+            </div>
+            <div class="committee-item students">
+              <p>Manisha Chinmayee S</p>
+            </div>
+            <div class="committee-item students">
+              <p>Shahensha khatun</p>
+            </div>
+            <div class="committee-item students">
+              <p>Satwik Girish Gosavi</p>
+            </div>
+            <div class="committee-item students">
+              <p>Shafiulla</p>
+            </div>
+            <div class="committee-item students">
+              <p>Rushil Sham Raju</p>
+            </div>
+            <div class="committee-item students">
+              <p>Mohammad Zuhaib Wani</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="core-drivers">
+        <p>Core System Drivers</p>
+        <div class="driver-bars">
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+          <span></span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- College Location Section -->
+  <section class="college-location-section" id="venue">
+    <div class="location-indicator"></div>
+    <h2>HKBK COLLEGE OF ENGINEERING</h2>
+    <p class="location-address">Survey No. 22/1, Opp. Manyata Tech Park, Nagawara,<br>Bangalore, Karnataka 560045</p>
+    <a href="https://maps.google.com/?q=HKBK+College+of+Engineering+Bangalore" target="_blank" class="maps-btn">
+      OPEN IN MAPS
+    </a>
+  </section>
+
+  <!-- Footer -->
+  <footer class="main-footer">
+    <div class="footer-content">
+      <p class="footer-copyright">© 2026 AI IGNITE. ALL RIGHTS RESERVED.</p>
+      <div class="footer-links">
+        <a href="#privacy">Privacy</a>
+        <a href="#terms">Terms</a>
+        <span>Day 1: [April 14, 2026]</span>
+        <span>Day 2: [April 15, 2026]</span>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Modal Backdrop -->
+  <div class="modal-backdrop" id="modalBackdrop"></div>
+
+  <!-- Registration Modal -->
+  <div class="registration-modal" id="registrationModal">
+    <div class="modal-header">
+      <div class="modal-line"></div>
+      <h2>Secure Your Spot</h2>
+      <button class="modal-close" onclick="closeModal()">✕</button>
+    </div>
+
+    <div class="modal-content">
+      <div class="modal-left">
+        <h3>Register Your Team</h3>
+
+        <form id="registrationForm" class="registration-form">
+          <div class="form-group">
+            <label>Full Name</label>
+            <input type="text" id="name" name="name" required placeholder="Enter your full name">
+          </div>
+
+          <div class="form-group">
+            <label>Email</label>
+            <input type="email" id="email" name="email" required placeholder="your@email.com">
+          </div>
+
+          <div class="form-group">
+            <label>Phone Number</label>
+            <input type="tel" id="phone" name="phone" required placeholder="+91 9876543210">
+          </div>
+
+          <div class="form-group">
+            <label>College</label>
+            <input type="text" id="college" name="college" required placeholder="Your college name">
+          </div>
+
+          <div class="form-group-row">
+            <div class="form-group">
+              <label>Team Name</label>
+              <input type="text" id="teamName" name="teamName" required placeholder="Enter team name">
+            </div>
+
+            <div class="form-group">
+              <label>Team Size (1-4)</label>
+              <input type="number" id="teamSize" name="teamSize" min="1" max="4" required placeholder="Members">
+            </div>
+          </div>
+
+          <div class="fee-box">
+            <p>Registration Fee: <span class="fee-amount">₹500</span></p>
+          </div>
+
+          <button type="submit" class="btn-submit">Proceed to Payment</button>
+        </form>
+
+        <div id="successMessage" class="success-message" style="display: none;">
+          <h4>Registration Complete</h4>
+          <p>Your payment is verified and your team is successfully registered for AI IGNITE 2026.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Razorpay Script -->
+  <script src="https://checkout.razorpay.com/v1/checkout.js"></script>
+  <script src="script.js"></script>
+</body>
+</html>

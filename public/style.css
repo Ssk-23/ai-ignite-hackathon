@@ -2217,6 +2217,20 @@ body {
     font-size: 0.68em;
   }
 
+  .sponsor-container {
+    gap: 24px;
+  }
+
+  .sponsor-left,
+  .sponsor-right {
+    display: block;
+  }
+
+  .sponsor-right {
+    display: flex;
+    margin-top: 8px;
+  }
+
   .committee-grid {
     gap: 24px;
     margin-bottom: 26px;
@@ -2327,6 +2341,12 @@ body {
   .reward-item {
     gap: 12px;
     margin-bottom: 16px;
+  }
+
+  .sponsor-label,
+  .sponsor-desc,
+  .sponsor-footer {
+    font-size: 0.72em;
   }
 
   .reward-icon {

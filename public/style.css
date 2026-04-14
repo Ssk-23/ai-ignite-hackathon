@@ -2068,3 +2068,274 @@ body {
     grid-template-columns: 1fr;
   }
 }
+
+@media (max-width: 900px) {
+  .nav-container {
+    flex-wrap: wrap;
+    gap: 12px;
+    padding: 12px 14px;
+  }
+
+  .nav-brand {
+    font-size: 1.1em;
+    letter-spacing: 1px;
+  }
+
+  .nav-menu {
+    order: 3;
+    width: 100%;
+    gap: 14px;
+    padding-bottom: 2px;
+    overflow-x: auto;
+    white-space: nowrap;
+    scrollbar-width: none;
+  }
+
+  .nav-menu::-webkit-scrollbar {
+    display: none;
+  }
+
+  .nav-link {
+    font-size: 0.72em;
+    letter-spacing: 0.8px;
+  }
+
+  .register-btn {
+    padding: 9px 14px;
+    font-size: 0.66em;
+  }
+
+  .hero {
+    min-height: auto;
+    padding: 84px 16px 34px;
+  }
+
+  .hero-content {
+    padding: 0;
+  }
+
+  .college-name {
+    font-size: 0.72em;
+    margin-bottom: 12px;
+  }
+
+  .hero-title {
+    font-size: 1.65em;
+    letter-spacing: 1px;
+    margin: 10px 0;
+  }
+
+  .hero-tagline {
+    font-size: 0.8em;
+    line-height: 1.7;
+    margin: 18px auto;
+  }
+
+  .countdown {
+    gap: 8px;
+    margin-top: 24px;
+  }
+
+  .countdown-item {
+    min-width: 66px;
+    padding: 11px 10px;
+  }
+
+  .countdown-number {
+    font-size: 1.45em;
+  }
+
+  .separator {
+    font-size: 1.2em;
+  }
+
+  .particle {
+    display: none;
+  }
+
+  .detail-card,
+  .tech-tracks-card,
+  .timeline-item,
+  .prize-box {
+    padding: 20px 16px;
+  }
+
+  .detail-card {
+    min-height: unset;
+  }
+
+  .track-badge,
+  .sponsor-badge {
+    font-size: 0.58em;
+    padding: 7px 10px;
+  }
+
+  .timeline-header {
+    margin-bottom: 22px;
+  }
+
+  .timeline-number {
+    font-size: 2.1em;
+    margin-bottom: 10px;
+  }
+
+  .timeline-item h3 {
+    font-size: 1em;
+    margin-bottom: 12px;
+  }
+
+  .mission-objective {
+    padding: 14px;
+  }
+
+  .rewards-left h2,
+  .sponsor-left h2,
+  .leadership-container h2,
+  .committee-container h2,
+  .cta-content h2,
+  .college-location-section h2 {
+    font-size: 1.45em;
+  }
+
+  .prize-amount {
+    font-size: 2.2em;
+  }
+
+  .image-placeholder {
+    width: 230px;
+    height: 230px;
+  }
+
+  .floating-image {
+    width: 125px;
+    height: 125px;
+  }
+
+  .image-content {
+    width: 94px;
+    height: 94px;
+    font-size: 0.68em;
+  }
+
+  .committee-grid {
+    gap: 24px;
+    margin-bottom: 26px;
+  }
+
+  .committee-header {
+    margin-bottom: 12px;
+  }
+
+  .cta-container {
+    gap: 18px;
+  }
+
+  .cta-icon {
+    display: none;
+  }
+
+  .location-address {
+    font-size: 0.82em;
+    line-height: 1.8;
+  }
+
+  .registration-modal {
+    width: calc(100% - 20px);
+    max-height: calc(100vh - 24px);
+    top: 52%;
+  }
+
+  .modal-header {
+    padding: 12px 14px;
+  }
+
+  .modal-content {
+    padding: 12px 14px 14px;
+  }
+
+  .modal-header h2 {
+    font-size: 0.9em;
+  }
+
+  .modal-left h3 {
+    font-size: 0.74em;
+    margin-bottom: 10px;
+  }
+
+  .form-group label,
+  .member-names-title {
+    font-size: 0.62em;
+  }
+
+  .form-group input {
+    font-size: 0.82em;
+    padding: 10px;
+  }
+
+  .btn-submit {
+    font-size: 0.68em;
+    padding: 11px 12px;
+  }
+
+  .success-message p {
+    font-size: 0.78em;
+  }
+
+  .footer-content {
+    text-align: left;
+  }
+
+  .footer-links {
+    justify-content: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .carousel-section,
+  .details-section,
+  .timeline-section,
+  .rewards-section,
+  .sponsor-section,
+  .leadership-section,
+  .committee-section,
+  .cta-section,
+  .college-location-section {
+    padding: 36px 14px;
+  }
+
+  .hero-title {
+    font-size: 1.35em;
+  }
+
+  .countdown {
+    gap: 6px;
+  }
+
+  .countdown-item {
+    min-width: 58px;
+    padding: 9px 8px;
+  }
+
+  .countdown-number {
+    font-size: 1.25em;
+  }
+
+  .countdown-label {
+    font-size: 0.55em;
+  }
+
+  .reward-item {
+    gap: 12px;
+    margin-bottom: 16px;
+  }
+
+  .reward-icon {
+    font-size: 1.7em;
+  }
+
+  .maps-btn,
+  .cta-button {
+    width: 100%;
+    text-align: center;
+  }
+}

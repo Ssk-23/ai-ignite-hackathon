@@ -239,3 +239,32 @@ tbody tr:hover {
     width: 100%;
   }
 }
+
+@media (max-width: 520px) {
+  .admin-shell {
+    width: 96vw;
+    margin: 16px auto;
+  }
+
+  .table-panel {
+    border-radius: 10px;
+  }
+
+  .table-toolbar {
+    padding: 10px;
+  }
+
+  .stat-card {
+    padding: 10px;
+  }
+
+  th,
+  td {
+    padding: 10px 8px;
+    font-size: 12px;
+  }
+
+  table {
+    min-width: 920px;
+  }
+}

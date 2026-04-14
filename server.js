@@ -5,9 +5,47 @@ require('dotenv').config();
 
 const app = express();
 
+const ADMIN_USERNAME = process.env.ADMIN_USERNAME || 'admin';
+const ADMIN_PASSWORD = process.env.ADMIN_PASSWORD || 'ignite2026';
+
+function requiresAdminAuth(req, res, next) {
+  const authHeader = req.headers.authorization || '';
+  const [scheme, encoded] = authHeader.split(' ');
+
+  if (scheme !== 'Basic' || !encoded) {
+    res.set('WWW-Authenticate', 'Basic realm="AI IGNITE Admin"');
+    return res.status(401).send('Authentication required');
+  }
+
+  let decoded = '';
+  try {
+    decoded = Buffer.from(encoded, 'base64').toString('utf8');
+  } catch (error) {
+    res.set('WWW-Authenticate', 'Basic realm="AI IGNITE Admin"');
+    return res.status(401).send('Invalid authorization header');
+  }
+
+  const separatorIndex = decoded.indexOf(':');
+  if (separatorIndex < 0) {
+    res.set('WWW-Authenticate', 'Basic realm="AI IGNITE Admin"');
+    return res.status(401).send('Invalid authorization format');
+  }
+
+  const providedUsername = decoded.slice(0, separatorIndex);
+  const providedPassword = decoded.slice(separatorIndex + 1);
+
+  if (providedUsername !== ADMIN_USERNAME || providedPassword !== ADMIN_PASSWORD) {
+    res.set('WWW-Authenticate', 'Basic realm="AI IGNITE Admin"');
+    return res.status(401).send('Invalid username or password');
+  }
+
+  return next();
+}
+
 // Middleware
 app.use(cors());
 app.use(express.json());
+app.use(['/admin.html', '/admin.css', '/admin.js'], requiresAdminAuth);
 app.use(express.static('public'));
 
 // MongoDB Connection
@@ -34,9 +72,20 @@ function isDatabaseConnected() {
   return mongoose.connection.readyState === 1;
 }
 
+function normalizeMemberNames(memberNames) {
+  if (!Array.isArray(memberNames)) {
+    return [];
+  }
+
+  return memberNames
+    .map((memberName) => (typeof memberName === 'string' ? memberName.trim() : ''))
+    .filter(Boolean);
+}
+
 function hasValidRegistrationBody(body) {
-  const { name, email, phone, college, teamName, teamSize } = body;
+  const { name, email, phone, college, teamName, teamSize, memberNames } = body;
   const parsedTeamSize = Number(teamSize);
+  const normalizedMemberNames = normalizeMemberNames(memberNames);
 
   return Boolean(
     name &&
@@ -46,7 +95,8 @@ function hasValidRegistrationBody(body) {
     teamName &&
     Number.isInteger(parsedTeamSize) &&
     parsedTeamSize >= 1 &&
-    parsedTeamSize <= 4
+    parsedTeamSize <= 4 &&
+    normalizedMemberNames.length === parsedTeamSize
   );
 }
 
@@ -58,6 +108,7 @@ const registrationSchema = new mongoose.Schema({
   college: String,
   teamName: String,
   teamSize: Number,
+  memberNames: [String],
   createdAt: { type: Date, default: Date.now },
 });
 
@@ -85,7 +136,8 @@ app.post('/api/register', async (req, res) => {
       return res.status(400).json({ success: false, error: 'Invalid registration data' });
     }
 
-    const { name, email, phone, college, teamName, teamSize } = req.body;
+    const { name, email, phone, college, teamName, teamSize, memberNames } = req.body;
+    const normalizedMemberNames = normalizeMemberNames(memberNames);
 
     // Create registration
     const registration = new Registration({
@@ -95,6 +147,7 @@ app.post('/api/register', async (req, res) => {
       college,
       teamName,
       teamSize,
+      memberNames: normalizedMemberNames,
     });
 
     await registration.save();
@@ -110,7 +163,7 @@ app.post('/api/register', async (req, res) => {
 });
 
 // Get All Registrations (Admin)
-app.get('/api/registrations', async (req, res) => {
+app.get('/api/registrations', requiresAdminAuth, async (req, res) => {
   try {
     if (!isDatabaseConnected()) {
       return res.status(503).json({ success: false, error: 'Database is not connected. Try again in a moment.' });

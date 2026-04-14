@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AI IGNITE 2026 | Admin Panel</title>
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+  <div class="admin-shell">
+    <header class="admin-header">
+      <div>
+        <p class="eyebrow">AI IGNITE 2026</p>
+        <h1>Registration Admin Panel</h1>
+        <p class="subtitle">View and search all registered teams in one place.</p>
+      </div>
+      <div class="header-actions">
+        <a class="ghost-btn" href="index.html">Back to Website</a>
+        <button class="primary-btn" id="refreshBtn" type="button">Refresh</button>
+      </div>
+    </header>
+
+    <section class="stats-grid">
+      <article class="stat-card">
+        <p>Total Teams</p>
+        <h2 id="totalTeams">0</h2>
+      </article>
+      <article class="stat-card">
+        <p>Total Participants</p>
+        <h2 id="totalParticipants">0</h2>
+      </article>
+      <article class="stat-card">
+        <p>Last Updated</p>
+        <h2 id="lastUpdated">-</h2>
+      </article>
+    </section>
+
+    <section class="table-panel">
+      <div class="table-toolbar">
+        <input id="searchInput" type="text" placeholder="Search by team, name, email, or college">
+        <p id="resultCount">0 records</p>
+      </div>
+
+      <div id="errorBox" class="error-box" hidden></div>
+
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Team Name</th>
+              <th>Team Size</th>
+              <th>Member Names</th>
+              <th>Contact Person</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>College</th>
+              <th>Registered At</th>
+            </tr>
+          </thead>
+          <tbody id="registrationsBody">
+            <tr>
+              <td colspan="9" class="loading-cell">Loading registrations...</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+
+  <script src="admin.js"></script>
+</body>
+</html>

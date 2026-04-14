@@ -4,6 +4,7 @@ let modalEl;
 let backdropEl;
 let formEl;
 let successMessageEl;
+let memberNamesContainerEl;
 
 function openModal() {
   if (!modalEl || !backdropEl) return;
@@ -86,7 +87,49 @@ function collectFormData() {
     college: getEl('college').value.trim(),
     teamName: getEl('teamName').value.trim(),
     teamSize: Number.parseInt(getEl('teamSize').value, 10),
+    memberNames: collectMemberNames(),
   };
+}
+
+function collectMemberNames() {
+  if (!memberNamesContainerEl) return [];
+
+  return Array.from(memberNamesContainerEl.querySelectorAll('input[name="memberNames[]"]'))
+    .map((input) => input.value.trim())
+    .filter(Boolean);
+}
+
+function renderMemberNameFields(memberCount) {
+  if (!memberNamesContainerEl) return;
+
+  memberNamesContainerEl.innerHTML = '';
+
+  if (!Number.isInteger(memberCount) || memberCount < 1 || memberCount > 4) {
+    return;
+  }
+
+  const title = document.createElement('p');
+  title.className = 'member-names-title';
+  title.textContent = 'Team Member Names';
+  memberNamesContainerEl.appendChild(title);
+
+  for (let index = 1; index <= memberCount; index += 1) {
+    const group = document.createElement('div');
+    group.className = 'form-group';
+
+    const label = document.createElement('label');
+    label.textContent = `Member ${index} Name`;
+
+    const input = document.createElement('input');
+    input.type = 'text';
+    input.name = 'memberNames[]';
+    input.placeholder = `Enter member ${index} full name`;
+    input.required = true;
+
+    group.appendChild(label);
+    group.appendChild(input);
+    memberNamesContainerEl.appendChild(group);
+  }
 }
 
 function isValidFormData(data) {
@@ -98,7 +141,10 @@ function isValidFormData(data) {
     data.teamName &&
     Number.isInteger(data.teamSize) &&
     data.teamSize >= 1 &&
-    data.teamSize <= 4
+    data.teamSize <= 4 &&
+    Array.isArray(data.memberNames) &&
+    data.memberNames.length === data.teamSize &&
+    data.memberNames.every((memberName) => Boolean(memberName))
   );
 }
 
@@ -107,6 +153,7 @@ function showSuccessState() {
   formEl.style.display = 'none';
   successMessageEl.style.display = 'block';
   formEl.reset();
+  renderMemberNameFields(1);
   successMessageEl.scrollIntoView({ behavior: 'smooth' });
 }
 
@@ -115,6 +162,7 @@ document.addEventListener('DOMContentLoaded', () => {
   backdropEl = getEl('modalBackdrop');
   formEl = getEl('registrationForm');
   successMessageEl = getEl('successMessage');
+  memberNamesContainerEl = getEl('memberNamesContainer');
 
   startCountdown();
 
@@ -130,12 +178,23 @@ document.addEventListener('DOMContentLoaded', () => {
 
   if (!formEl) return;
 
+  const teamSizeInput = getEl('teamSize');
+  if (teamSizeInput) {
+    const initialTeamSize = Number.parseInt(teamSizeInput.value, 10);
+    renderMemberNameFields(Number.isInteger(initialTeamSize) ? initialTeamSize : 1);
+
+    teamSizeInput.addEventListener('input', () => {
+      const memberCount = Number.parseInt(teamSizeInput.value, 10);
+      renderMemberNameFields(memberCount);
+    });
+  }
+
   formEl.addEventListener('submit', async (event) => {
     event.preventDefault();
 
     const formData = collectFormData();
     if (!isValidFormData(formData)) {
-      alert('Please fill all fields correctly. Team size must be between 1 and 4.');
+      alert('Please fill all fields correctly. Enter all member names and keep member count between 1 and 4.');
       return;
     }
 

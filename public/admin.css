@@ -1,0 +1,241 @@
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Courier+Prime:wght@400;700&display=swap');
+
+:root {
+  --bg-1: #070b1e;
+  --bg-2: #101735;
+  --ink: #e5e7eb;
+  --muted: #9aa4bb;
+  --cyan: #67e8f9;
+  --mint: #86efac;
+  --border: rgba(148, 163, 184, 0.25);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  font-family: 'Courier Prime', monospace;
+  color: var(--ink);
+  background:
+    radial-gradient(circle at 10% 20%, rgba(103, 232, 249, 0.1), transparent 35%),
+    radial-gradient(circle at 85% 15%, rgba(134, 239, 172, 0.08), transparent 30%),
+    linear-gradient(160deg, var(--bg-1), var(--bg-2));
+}
+
+.admin-shell {
+  width: min(1220px, 94vw);
+  margin: 34px auto;
+}
+
+.admin-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.eyebrow {
+  margin: 0 0 10px;
+  text-transform: uppercase;
+  color: var(--mint);
+  letter-spacing: 1.2px;
+  font-size: 12px;
+}
+
+h1 {
+  margin: 0;
+  font-family: 'Orbitron', sans-serif;
+  font-size: clamp(1.4rem, 3vw, 2rem);
+}
+
+.subtitle {
+  margin: 8px 0 0;
+  color: var(--muted);
+  font-size: 14px;
+}
+
+.header-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.ghost-btn,
+.primary-btn {
+  border-radius: 10px;
+  padding: 11px 16px;
+  font-family: 'Orbitron', sans-serif;
+  text-decoration: none;
+  font-size: 12px;
+  letter-spacing: 0.8px;
+  border: 1px solid transparent;
+  cursor: pointer;
+  text-transform: uppercase;
+}
+
+.ghost-btn {
+  color: var(--ink);
+  border-color: var(--border);
+  background: rgba(15, 23, 42, 0.7);
+}
+
+.primary-btn {
+  color: #082226;
+  border-color: rgba(134, 239, 172, 0.5);
+  background: linear-gradient(135deg, var(--mint), var(--cyan));
+}
+
+.stats-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+  margin-bottom: 14px;
+}
+
+.stat-card {
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: 14px;
+  background: rgba(2, 6, 23, 0.55);
+}
+
+.stat-card p {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.7px;
+}
+
+.stat-card h2 {
+  margin: 8px 0 0;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 1.3rem;
+}
+
+.table-panel {
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  background: rgba(2, 6, 23, 0.65);
+  overflow: hidden;
+}
+
+.table-toolbar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+  padding: 14px;
+  border-bottom: 1px solid var(--border);
+}
+
+#searchInput {
+  width: min(500px, 100%);
+  border-radius: 10px;
+  border: 1px solid var(--border);
+  background: rgba(15, 23, 42, 0.8);
+  color: var(--ink);
+  font-family: 'Courier Prime', monospace;
+  padding: 11px 12px;
+}
+
+#searchInput:focus {
+  outline: none;
+  border-color: var(--cyan);
+  box-shadow: 0 0 0 3px rgba(103, 232, 249, 0.18);
+}
+
+#resultCount {
+  margin: 0;
+  color: var(--muted);
+  font-size: 12px;
+}
+
+.error-box {
+  margin: 14px 14px 0;
+  border: 1px solid rgba(248, 113, 113, 0.45);
+  border-radius: 10px;
+  padding: 10px;
+  color: #fecaca;
+  background: rgba(127, 29, 29, 0.2);
+}
+
+.table-wrap {
+  overflow: auto;
+  max-height: 72vh;
+}
+
+table {
+  width: 100%;
+  min-width: 1160px;
+  border-collapse: collapse;
+}
+
+th,
+td {
+  text-align: left;
+  padding: 12px 10px;
+  border-bottom: 1px solid rgba(148, 163, 184, 0.2);
+  vertical-align: top;
+  font-size: 13px;
+}
+
+th {
+  position: sticky;
+  top: 0;
+  background: #0f172a;
+  color: #93c5fd;
+  font-family: 'Orbitron', sans-serif;
+  font-size: 11px;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+tbody tr:hover {
+  background: rgba(30, 41, 59, 0.5);
+}
+
+.member-list {
+  margin: 0;
+  padding-left: 16px;
+}
+
+.loading-cell,
+.empty-cell {
+  text-align: center;
+  color: var(--muted);
+  padding: 22px;
+}
+
+@media (max-width: 900px) {
+  .admin-header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .header-actions {
+    width: 100%;
+  }
+
+  .header-actions .ghost-btn,
+  .header-actions .primary-btn {
+    flex: 1;
+    text-align: center;
+  }
+
+  .stats-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .table-toolbar {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  #searchInput {
+    width: 100%;
+  }
+}

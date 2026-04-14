@@ -1862,6 +1862,23 @@ body {
   gap: 12px;
 }
 
+.member-names-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 2px;
+}
+
+.member-names-title {
+  font-family: 'Courier Prime', monospace;
+  font-size: 0.68em;
+  color: var(--secondary);
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+  font-weight: 700;
+  margin: 2px 0;
+}
+
 .fee-box {
   background: rgba(148, 163, 184, 0.08);
   border: 1px solid rgba(203, 213, 225, 0.2);

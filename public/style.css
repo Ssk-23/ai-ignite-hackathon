@@ -908,7 +908,7 @@ body {
 }
 
 /* Sponsor Section */
-.sponsor-section {
+.partner-section {
   position: relative;
   padding: 70px 40px;
   background: rgba(10, 14, 39, 0.6);
@@ -916,7 +916,7 @@ body {
   z-index: 2;
 }
 
-.sponsor-container {
+.partner-container {
   max-width: 1400px;
   margin: 0 auto;
   display: grid;
@@ -926,13 +926,13 @@ body {
 }
 
 @media (max-width: 1024px) {
-  .sponsor-container {
+  .partner-container {
     grid-template-columns: 1fr;
     gap: 50px;
   }
 }
 
-.sponsor-label {
+.partner-label {
   font-family: 'Courier Prime', monospace;
   font-size: 0.65em;
   letter-spacing: 1.5px;
@@ -945,7 +945,7 @@ body {
   text-transform: uppercase;
 }
 
-.sponsor-label::before {
+.partner-label::before {
   content: '';
   display: inline-block;
   width: 25px;
@@ -953,7 +953,7 @@ body {
   background: var(--secondary);
 }
 
-.sponsor-left h2 {
+.partner-left h2 {
   font-family: 'Orbitron', sans-serif;
   font-size: 2.3em;
   font-weight: 700;
@@ -962,25 +962,25 @@ body {
   margin-bottom: 16px;
 }
 
-.sponsor-highlight {
+.partner-highlight {
   color: var(--primary);
 }
 
-.sponsor-desc {
+.partner-desc {
   color: var(--text-secondary);
   line-height: 1.8;
   font-size: 0.9em;
   margin-bottom: 24px;
 }
 
-.sponsor-badges {
+.partner-badges {
   display: flex;
   gap: 12px;
   flex-wrap: wrap;
   margin-bottom: 24px;
 }
 
-.sponsor-badge {
+.partner-badge {
   border: 1px solid rgba(167, 139, 250, 0.3);
   background: rgba(167, 139, 250, 0.08);
   color: var(--primary);
@@ -994,12 +994,12 @@ body {
   transition: all 0.3s;
 }
 
-.sponsor-badge:hover {
+.partner-badge:hover {
   background: rgba(167, 139, 250, 0.15);
   border-color: var(--primary);
 }
 
-.sponsor-footer {
+.partner-footer {
   font-family: 'Courier Prime', monospace;
   font-size: 0.65em;
   letter-spacing: 0.5px;
@@ -1011,11 +1011,11 @@ body {
   font-weight: 600;
 }
 
-.sponsor-icon {
+.partner-icon {
   font-size: 1em;
 }
 
-.sponsor-right {
+.partner-right {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -2036,7 +2036,7 @@ body {
   .details-section,
   .timeline-section,
   .rewards-section,
-  .sponsor-section,
+  .partner-section,
   .leadership-section,
   .committee-section,
   .cta-section,
@@ -2165,7 +2165,7 @@ body {
   }
 
   .track-badge,
-  .sponsor-badge {
+  .partner-badge {
     font-size: 0.58em;
     padding: 7px 10px;
   }
@@ -2189,7 +2189,7 @@ body {
   }
 
   .rewards-left h2,
-  .sponsor-left h2,
+  .partner-left h2,
   .leadership-container h2,
   .committee-container h2,
   .cta-content h2,
@@ -2217,16 +2217,16 @@ body {
     font-size: 0.68em;
   }
 
-  .sponsor-container {
+  .partner-container {
     gap: 24px;
   }
 
-  .sponsor-left,
-  .sponsor-right {
+  .partner-left,
+  .partner-right {
     display: block;
   }
 
-  .sponsor-right {
+  .partner-right {
     display: flex;
     margin-top: 8px;
   }
@@ -2309,7 +2309,7 @@ body {
   .details-section,
   .timeline-section,
   .rewards-section,
-  .sponsor-section,
+  .partner-section,
   .leadership-section,
   .committee-section,
   .cta-section,
@@ -2343,9 +2343,9 @@ body {
     margin-bottom: 16px;
   }
 
-  .sponsor-label,
-  .sponsor-desc,
-  .sponsor-footer {
+  .partner-label,
+  .partner-desc,
+  .partner-footer {
     font-size: 0.72em;
   }
 
